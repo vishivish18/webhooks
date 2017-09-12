@@ -17,6 +17,9 @@ app.use(bodyParser.urlencoded({
     limit: 153791147
 }));
 
+app.get('/', function(req, res) {
+	res.send("The App is running")
+})
 app.post('/payload', function(req, res) {
     console.log(JSON.stringify(req.body.payload))
         //get data and check for repo name
