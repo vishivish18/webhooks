@@ -21,7 +21,7 @@ app.get('/', function(req, res) {
 	res.send("The App is running")
 })
 app.post('/payload', function(req, res) {
-    console.log(JSON.stringify(req.body.payload))
+    console.log(req.body.payload)
         //get data and check for repo name
         // swtich(eventname)
 	        //  case :'Push'
