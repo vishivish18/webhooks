@@ -48,11 +48,19 @@ app.post('/payload', function(req, res) {
         if (shell.exec('git pull origin master').code !== 0) {
             shell.echo('Error: PULL failed');
             shell.exit(1);
+            res.status(500).json({"message":"Error: PULL failed"});
         }
-
+        if (shell.exec('pm2 restart vishalranjan.in').code !== 0) {
+            shell.echo('Error: PM2 restart failed');
+            shell.exit(1);
+            res.status(500).json({"message":"Error: PM2 restart failed"});
+        }
+        res.status(200).json({"message":"Success"});
     } else {
         console.log(req.headers['x-github-event'] + " occured")
+        res.status(200).json({"message":"Success"});
     }
+
 });
 var port = process.env.PORT || 1800
 
