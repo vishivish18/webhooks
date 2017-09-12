@@ -27,6 +27,7 @@ app.post('/payload', function(req, res) {
         shell.echo('Sorry, this script requires git');
         shell.exit(1);
     }
+    shell.cd('../vishalranjan.in/');
     if (shell.exec('git pull origin master').code !== 0) {
         shell.echo('Error: PULL failed');
         shell.exit(1);
