@@ -27,11 +27,7 @@ app.post('/payload', function(req, res) {
         shell.echo('Sorry, this script requires git');
         shell.exit(1);
     }
-    shell.cd('../vishalranjan.in/');
-    if (shell.exec('git pull origin master').code !== 0) {
-        shell.echo('Error: PULL failed');
-        shell.exit(1);
-    }
+
     //get data and check for repo name
     // swtich(eventname)
     //  case :'Push'
@@ -48,6 +44,11 @@ app.post('/payload', function(req, res) {
     //     	break
 
     if (req.headers['x-github-event'] == 'push') {
+        shell.cd('../vishalranjan.in/');
+        if (shell.exec('git pull origin master').code !== 0) {
+            shell.echo('Error: PULL failed');
+            shell.exit(1);
+        }
 
     } else {
         console.log(req.headers['x-github-event'] + " occured")
