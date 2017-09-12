@@ -21,6 +21,7 @@ app.get('/', function(req, res) {
 	res.send("The App is running")
 })
 app.post('/payload', function(req, res) {
+    console.log(req.headers)
     console.log(req.body.payload)
         //get data and check for repo name
         // swtich(eventname)
