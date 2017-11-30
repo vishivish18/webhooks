@@ -20,6 +20,10 @@ app.use(bodyParser.urlencoded({
 app.get('/', function(req, res) {
     res.send("The App is running")
 })
+app.get('/send-to-jatana', function(req, res) {
+    shell.exec('curl -X POST -H "Content-Type: application/json" -d @./macro_ticket_data.json https://nlp.motherbot.co/dev/api/v1.0/jatana -v')
+})
+
 app.post('/payload', function(req, res) {
     console.log(req.headers)
     console.log(req.body.payload)
